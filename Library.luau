@@ -11,7 +11,7 @@ local Teams: Teams = cloneref(game:GetService("Teams"))
 local TweenService: TweenService = cloneref(game:GetService("TweenService"))
 
 local blur = Instance.new("BlurEffect")
-blur.Name = "@#)V!$*QZ_+="
+blur.Name = "BlurN1L"
 blur.Size = 15
 blur.Parent = game:GetService("Lighting")
 
@@ -7307,7 +7307,7 @@ function Library:CreateWindow(WindowInfo)
             ):Play()
 
             game.TweenService:Create(
-                game:GetService("Lighting"):WaitForChild("@#)V!$*QZ_+="),
+                blur,
                 TweenInfo.new(0.15),
                 {Size = 15}
             ):Play()
@@ -7315,7 +7315,7 @@ function Library:CreateWindow(WindowInfo)
             MainFrame.Visible = false
 
             game.TweenService:Create(
-                game:GetService("Lighting"):WaitForChild("@#)V!$*QZ_+="),
+                blur,
                 TweenInfo.new(0.15),
                 {Size = 0}
             ):Play()
