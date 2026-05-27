@@ -7306,7 +7306,7 @@ function Library:CreateWindow(WindowInfo)
             ):Play()
 
             game.TweenService:Create(
-                game:GetService("Lighting").BlurEffect,
+                game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect"),
                 TweenInfo.new(0.15),
                 {Size = 10}
             ):Play()
@@ -7314,9 +7314,9 @@ function Library:CreateWindow(WindowInfo)
             MainFrame.Visible = false
 
             game.TweenService:Create(
-                game:GetService("Lighting").BlurEffect,
+                game:GetService("Lighting").FindFirstChildOfClass("BlurEffect"),
                 TweenInfo.new(0.15),
-                {Size = 10}
+                {Size = 0}
             ):Play()
         end
 
