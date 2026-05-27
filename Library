@@ -5908,8 +5908,6 @@ function Library:CreateWindow(WindowInfo)
             Size = WindowInfo.Size,
             Visible = false,
             Parent = ScreenGui,
-
-            AnchorPoint = Vector2.new(0.5, 0.5),
         })
         New("UICorner", {
             CornerRadius = UDim.new(0, WindowInfo.CornerRadius),
@@ -5948,7 +5946,7 @@ function Library:CreateWindow(WindowInfo)
         end
 
         if WindowInfo.Center then
-            MainFrame.Position = UDim2.fromScale(0.5, 0.5)
+            MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
         end
 
         --// Top Bar \\-
@@ -7270,7 +7268,7 @@ function Library:CreateWindow(WindowInfo)
     end
 
     function Library:Toggle(Value: boolean?)
-       if typeof(Value) == "boolean" then
+        if typeof(Value) == "boolean" then
             Library.Toggled = Value
         else
             Library.Toggled = not Library.Toggled
@@ -7278,12 +7276,17 @@ function Library:CreateWindow(WindowInfo)
 
         if Library.Toggled then
             MainFrame.Visible = true
-            MainFrame.UIScale.Scale = MainFrame.UIScale.Scale - 0.1
+            
+            local OriginalSize = WindowInfo.Size
+            MainFrame.Size = UDim2.new(
+                OriginalSize.X.Scale, OriginalSize.X.Offset * 0.9,
+                OriginalSize.Y.Scale, OriginalSize.Y.Offset * 0.9
+            )
 
             TweenService:Create(
-                MainFrame.UIScale,
+                MainFrame,
                 TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
-                { Scale = 1 }
+                { Size = OriginalSize }
             ):Play()
         else
             MainFrame.Visible = false
@@ -7312,7 +7315,7 @@ function Library:CreateWindow(WindowInfo)
             end)
         elseif not Library.Toggled then
             TooltipLabel.Visible = false
-
+    
             for _, Option in Library.Options do
                 if Option.Type == "ColorPicker" then
                     Option.ColorMenu:Close()
