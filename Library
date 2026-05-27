@@ -7281,7 +7281,7 @@ function Library:CreateWindow(WindowInfo)
             local OriginalPosition = MainFrame.Position
 
             MainFrame.Size = UDim2.new(
-                MainFrame.Size.X, MainFrame.Size.X.Offset * 0.88,
+                MainFrame.Size.X.Scale, MainFrame.Size.X.Offset * 0.88,
                 MainFrame.Size.Y.Scale, MainFrame.Size.Y.Offset * 0.88
             )
 
