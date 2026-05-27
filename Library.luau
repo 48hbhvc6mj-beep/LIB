@@ -7299,7 +7299,7 @@ function Library:CreateWindow(WindowInfo)
 
             TweenService:Create(
                 MainFrame,
-                TweenInfo.new(0.12, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
+                TweenInfo.new(0.1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
                 {
                     Size = OriginalSize,
                     Position = OriginalPosition
@@ -7308,7 +7308,7 @@ function Library:CreateWindow(WindowInfo)
 
             game.TweenService:Create(
                 blur,
-                TweenInfo.new(0.12),
+                TweenInfo.new(0.1),
                 {Size = 20}
             ):Play()
         else
@@ -7316,7 +7316,7 @@ function Library:CreateWindow(WindowInfo)
 
             game.TweenService:Create(
                 blur,
-                TweenInfo.new(0.12),
+                TweenInfo.new(0.1),
                 {Size = 0}
             ):Play()
         end
