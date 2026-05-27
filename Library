@@ -10,6 +10,10 @@ local TextService: TextService = cloneref(game:GetService("TextService"))
 local Teams: Teams = cloneref(game:GetService("Teams"))
 local TweenService: TweenService = cloneref(game:GetService("TweenService"))
 
+local blur = Instance.new("BlurEffect")
+blur.Size = 24
+blur.Parent = game:GetService("Lighting")
+
 local getgenv = getgenv or function()
     return shared
 end
@@ -7294,14 +7298,26 @@ function Library:CreateWindow(WindowInfo)
 
             TweenService:Create(
                 MainFrame,
-                TweenInfo.new(0.1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
+                TweenInfo.new(0.15, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
                 {
                     Size = OriginalSize,
                     Position = OriginalPosition
                 }
             ):Play()
+
+            game.TweenService:Create(
+                game:GetService("Lighting").BlurEffect,
+                TweenInfo.new(0.15),
+                {Size = 10}
+            ):Play()
         else
             MainFrame.Visible = false
+
+            game.TweenService:Create(
+                game:GetService("Lighting").BlurEffect,
+                TweenInfo.new(0.15),
+                {Size = 10}
+            ):Play()
         end
 
         if WindowInfo.UnlockMouseWhileOpen then
