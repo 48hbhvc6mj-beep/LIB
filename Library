@@ -7281,15 +7281,15 @@ function Library:CreateWindow(WindowInfo)
             local OriginalPosition = MainFrame.Position
 
             MainFrame.Size = UDim2.new(
-                OriginalSize.X.Scale, OriginalSize.X.Offset * 0.88,
-                OriginalSize.Y.Scale, OriginalSize.Y.Offset * 0.88
+                MainFrame.Size.X, MainFrame.Size.X.Offset * 0.88,
+                MainFrame.Size.Y.Scale, MainFrame.Size.Y.Offset * 0.88
             )
 
             MainFrame.Position = UDim2.new(
-                OriginalPosition.X.Scale,
-                OriginalPosition.X.Offset + (OriginalSize.X.Offset * 0.06),
-                OriginalPosition.Y.Scale,
-                OriginalPosition.Y.Offset + (OriginalSize.Y.Offset * 0.06)
+                MainFrame.Position.X.Scale,
+                MainFrame.Position.X.Offset + (MainFrame.Size.X.Offset * 0.06),
+                MainFrame.Position.Y.Scale,
+                MainFrame.Position.Y.Offset + (MainFrame.Size.Y.Offset * 0.06)
             )
 
             TweenService:Create(
