@@ -12,7 +12,7 @@ local TweenService: TweenService = cloneref(game:GetService("TweenService"))
 
 local blur = Instance.new("BlurEffect")
 blur.Name = "BlurN1L"
-blur.Size = 15
+blur.Size = 20
 blur.Parent = game:GetService("Lighting")
 
 local getgenv = getgenv or function()
@@ -7299,7 +7299,7 @@ function Library:CreateWindow(WindowInfo)
 
             TweenService:Create(
                 MainFrame,
-                TweenInfo.new(0.15, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
+                TweenInfo.new(0.12, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
                 {
                     Size = OriginalSize,
                     Position = OriginalPosition
@@ -7308,15 +7308,15 @@ function Library:CreateWindow(WindowInfo)
 
             game.TweenService:Create(
                 blur,
-                TweenInfo.new(0.15),
-                {Size = 15}
+                TweenInfo.new(0.12),
+                {Size = 20}
             ):Play()
         else
             MainFrame.Visible = false
 
             game.TweenService:Create(
                 blur,
-                TweenInfo.new(0.15),
+                TweenInfo.new(0.12),
                 {Size = 0}
             ):Play()
         end
